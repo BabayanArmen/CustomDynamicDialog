@@ -1,0 +1,15 @@
+<div class="dialog-wrapper">
+
+    <div class="dialog-container">
+        <div class="dialog-header">
+            <span>Dialog header</span>
+            <span class="close" (click)="dialogService.closeDialog()">&#x2715;</span>
+        </div>
+        <hr style="padding: 0; margin: 0;">
+        <div class="dialog-content">
+            <ng-container *ngIf="component" [ngComponentOutlet]="component"></ng-container>
+        </div>
+    </div>
+
+</div>
+
