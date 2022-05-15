@@ -1,5 +1,4 @@
 <div class="dialog-wrapper">
-
     <div class="dialog-container">
         <div class="dialog-header">
             <span>Dialog header</span>
@@ -7,9 +6,12 @@
         </div>
         <hr style="padding: 0; margin: 0;">
         <div class="dialog-content">
-            <ng-container *ngIf="component" [ngComponentOutlet]="component"></ng-container>
+            <ng-container 
+            *ngIf="component" 
+            [ngComponentOutlet]="component"
+            [ngComponentOutletInjector]="dialogDataInjector"
+            ></ng-container>
         </div>
     </div>
-
 </div>
 
