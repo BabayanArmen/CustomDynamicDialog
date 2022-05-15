@@ -1,4 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
+import { take } from 'rxjs';
 import { DialogService } from './dialog/dialog.service';
 import { PageComponent } from './page/page.component';
 
@@ -17,7 +18,11 @@ export class AppComponent {
   }
 
   openDialog() {
-    this.dialogService.openDialog(PageComponent)
+    this.dialogService.openDialog(PageComponent, { name:'Jhones' })
+    .pipe(take(1))
+    .subscribe(evn => {
+      console.log(evn);
+    })
   }
 
 }

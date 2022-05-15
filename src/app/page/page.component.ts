@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { DialogService } from '../dialog/dialog.service';
 
 @Component({
   selector: 'app-page',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./page.component.scss']
 })
 export class PageComponent implements OnInit {
+  public data: any;
 
-  constructor() { }
+  constructor(@Inject('dialogData') public dialogData: any, private dialogService: DialogService) { }
 
   ngOnInit(): void {
+    this.data = this.dialogData;
+  }
+
+  public outPutEvent(value = {}) {
+    this.dialogService.dialogOutputEvent(value);
+    this.dialogService.closeDialog();
   }
 
 }
