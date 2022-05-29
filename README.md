@@ -28,3 +28,47 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## ===== my custom dialog module =====
 
+## important !
+1.  In App Component inject ViewContainerRef.
+    example 
+        constructor(private ref: ViewContainerRef) { AppViewContainerRef = this.ref }
+
+2.  Export ViewContainerRef as variable from app.component.ts file (not from class)
+    examlpe
+        export let AppViewContainerRef: ViewContainerRef;
+        
+3.  Inject DialogService in component where you need dialog
+    example
+        constructor(private dialogService: DialogService) { }
+
+4.  To open/close dialog, call openDialog/closeDialog method form DialogService.
+    You must pass specefic component class in open method, to open that component
+    in dialog. Also you can pass any data you need in dialog component.
+    Also you need to subscribe to openDialog method.
+    examlpe
+          openDialog() {
+            this.dialogService.openDialog(PageComponent, { name:'Johnes' })
+            .pipe(take(1))
+            .subscribe(evn => {
+            console.log(evn);
+            })
+        }
+    
+    in some cases you may have problems with unsubscribe, so it will be better to
+    use some observable destroy$, in pipe, and unsubscribe with component onDestroy.
+
+5.  To get passed data in dialog component, you need to inject dialogData
+    example 
+      constructor(@Inject('dialogData') public dialogData: any) { }
+        ngOnInit(): void {
+            this.data = this.dialogData;
+        }
+    
+6.  If you need some output event, you can use DialogService dialogOutputEvent event.
+    Value is optional
+    example
+        this.dialogService.dialogOutputEvent(value)
+        
+        or
+
+        this.dialogService.dialogOutputEvent()
