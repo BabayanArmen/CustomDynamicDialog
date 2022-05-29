@@ -1,5 +1,5 @@
 import { Injectable, InjectionToken, Injector, OnInit, Type } from '@angular/core';
-import { DialogWrapperComponent } from './dialog-wrapper/dialog-wrapper.component';
+import { DialogWrapperComponent } from './dialog-wrapper.component';
 import { AppViewContainerRef } from 'src/app/app.component';
 import { Subject } from 'rxjs';
 
