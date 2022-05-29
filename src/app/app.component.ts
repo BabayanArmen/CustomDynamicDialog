@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   openDialog() {
-    this.dialogService.openDialog(PageComponent, { name:'Jhones' })
+    this.dialogService.openDialog(PageComponent, { name:'Johnes' })
     .pipe(take(1))
     .subscribe(evn => {
       console.log(evn);

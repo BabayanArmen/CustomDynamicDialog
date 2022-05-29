@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit, Type } from '@angular/core';
 import { DialogService } from '../dialog.service';
+
 @Component({
   selector: 'app-dialog-wrapper',
   templateUrl: './dialog-wrapper.component.html',
